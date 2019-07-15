@@ -2288,6 +2288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  jumpForce: 3
 --- !u!1 &712197247
 GameObject:
   m_ObjectHideFlags: 0
@@ -2347,7 +2348,7 @@ GameObject:
   - component: {fileID: 1336875873}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
