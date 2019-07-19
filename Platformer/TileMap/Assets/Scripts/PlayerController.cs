@@ -43,6 +43,10 @@ public class PlayerController : MonoBehaviour
         {
             Application.Quit();
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Application.LoadLevel(0);
+        }
     }
 
     void OnCollisionStay2D(Collision2D collision)
@@ -86,7 +90,7 @@ public class PlayerController : MonoBehaviour
         livesText.text = "Lives: " + lives.ToString ();
         if (lives <= 0)
         {
-            loseText.text = "You Lose!";
+            loseText.text = "You Lose! Press 'space' to restart";
         }
     }
 }
