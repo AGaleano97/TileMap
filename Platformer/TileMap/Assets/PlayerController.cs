@@ -14,6 +14,12 @@ public class PlayerController : MonoBehaviour
     public Text livesText;
     public Text loseText;
     public float jumpForce;
+
+    public AudioClip musicClipOne;
+
+    public AudioClip musicClipTwo;
+
+    public AudioSource musicSource;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +35,11 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            musicSource.clip = musicClipOne;
+            musicSource.Play();
+        }
     }
     void FixedUpdate()
     {
@@ -43,7 +53,7 @@ public class PlayerController : MonoBehaviour
         {
             Application.Quit();
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             Application.LoadLevel(0);
         }
@@ -74,14 +84,20 @@ public class PlayerController : MonoBehaviour
             lives = lives - 1;
             SetLivesText ();
         }
+        if (count == 4)
+        {
+            transform.position = new Vector2(50,0);
+        }
     }
 
     void SetCountText ()
     {
         countText.text = "Score: " + count.ToString ();
-        if (count >= 4)
+        if (count >= 8)
         {
             winText.text = "You Win!";
+            musicSource.clip = musicClipTwo;
+            musicSource.Play();
         }
     }
 
@@ -90,7 +106,7 @@ public class PlayerController : MonoBehaviour
         livesText.text = "Lives: " + lives.ToString ();
         if (lives <= 0)
         {
-            loseText.text = "You Lose! Press 'space' to restart";
+            loseText.text = "You Lose! Press 'Q' to restart";
         }
     }
 }
